@@ -1,0 +1,409 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{display:flex;flex-direction:column;align-items:center;padding:16px 8px 32px;font-family:var(--font-sans)}
+.top-title{font-size:18px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.top-sub{font-size:11px;color:var(--color-text-secondary);letter-spacing:2px;margin-bottom:16px}
+.tabs{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:18px;max-width:520px}
+.tab{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:20px;padding:5px 11px;color:var(--color-text-secondary);font-size:11px;cursor:pointer;transition:all .15s;font-family:var(--font-mono)}
+.tab.on{background:#1a56db;border-color:#1a56db;color:#fff;font-weight:500}
+.phone{width:260px;border-radius:36px;border:2px solid var(--color-border-secondary);overflow:hidden;display:flex;flex-direction:column;height:530px}
+.notch{height:24px;display:flex;justify-content:center;align-items:flex-end;padding-bottom:3px;background:#0a0c14;flex-shrink:0}
+.ni{width:68px;height:18px;background:#0a0c14;border-radius:0 0 12px 12px;border:1.5px solid #1e2235;border-top:none;display:flex;align-items:center;justify-content:center;gap:4px}
+.sbody{flex:1;overflow-y:auto;overflow-x:hidden;background:#0a0c14;scrollbar-width:none}
+.sbody::-webkit-scrollbar{display:none}
+.hbar{height:20px;display:flex;align-items:center;justify-content:center;background:#0a0c14;flex-shrink:0}
+.navrow{display:flex;align-items:center;gap:14px;margin-top:16px}
+.nbtn{background:#1a56db;border:none;border-radius:8px;padding:7px 16px;color:#fff;font-size:11px;cursor:pointer;font-family:var(--font-mono)}
+.nbtn:disabled{background:var(--color-background-secondary);color:var(--color-text-tertiary);cursor:default}
+.slabel{margin-top:12px;text-align:center}
+.sc{display:none;flex-direction:column;padding-bottom:8px}
+.sc.on{display:flex}
+.row{display:flex;justify-content:space-between;align-items:center}
+.mcard{margin:6px 10px;border-radius:14px;padding:13px;border:1px solid}
+.srow{padding:8px 10px;border-radius:9px;margin-bottom:5px;border:1px solid #1e2235;background:#0f1220;display:flex;justify-content:space-between;align-items:center}
+.lbl{font-size:8px;letter-spacing:1.5px;color:#3a4060;margin-bottom:6px;font-family:var(--font-mono);padding:0 10px}
+</style>
+<div class="wrap">
+<div class="top-title">SmartFatak</div>
+<div class="top-sub">UI SCREENS — ALL FEATURES</div>
+<div class="tabs">
+  <div class="tab on" onclick="go(0)">1. Splash</div>
+  <div class="tab" onclick="go(1)">2. Home</div>
+  <div class="tab" onclick="go(2)">3. Gate Detail</div>
+  <div class="tab" onclick="go(3)">4. Leave Planner</div>
+  <div class="tab" onclick="go(4)">5. Train Detail</div>
+  <div class="tab" onclick="go(5)">6. Map</div>
+  <div class="tab" onclick="go(6)">7. Alerts</div>
+  <div class="tab" onclick="go(7)">8. Settings</div>
+</div>
+
+<div class="phone">
+  <div class="notch"><div class="ni"><div style="width:6px;height:6px;border-radius:50%;background:#1a1f30"></div><div style="width:22px;height:3px;border-radius:3px;background:#1a1f30"></div></div></div>
+  <div class="sbody" id="sbody">
+
+  <!-- S0 SPLASH -->
+  <div class="sc on" id="s0" style="background:linear-gradient(170deg,#0a0c14,#0c1840);align-items:center;justify-content:space-between;padding:26px 16px 16px;min-height:486px;position:relative;overflow:hidden">
+    <div style="position:absolute;width:200px;height:200px;border-radius:50%;border:1px solid rgba(26,86,219,.12);top:24px;left:50%;transform:translateX(-50%)"></div>
+    <div style="position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid rgba(26,86,219,.06);top:-20px;left:50%;transform:translateX(-50%)"></div>
+    <div style="text-align:center;z-index:1">
+      <div style="width:68px;height:68px;margin:0 auto 12px;background:#1a56db;border-radius:18px;display:flex;align-items:center;justify-content:center">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="3" y="16" width="30" height="4" rx="2" fill="white"/><rect x="3" y="9" width="4" height="18" rx="2" fill="white" opacity=".7"/><rect x="29" y="9" width="4" height="18" rx="2" fill="white" opacity=".7"/><circle cx="18" cy="7" r="4" fill="#ffaa00"/></svg>
+      </div>
+      <div style="font-size:24px;font-weight:500;color:#fff;letter-spacing:-1px">SmartFatak</div>
+      <div style="color:#1a56db;font-size:10px;letter-spacing:2px;margin-top:3px;font-family:var(--font-mono)">NEVER GET STUCK AGAIN</div>
+    </div>
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px 13px;width:100%;text-align:center;z-index:1">
+      <div style="font-size:22px;margin-bottom:8px">🚦</div>
+      <div style="color:#fff;font-size:12px;font-weight:500;margin-bottom:5px">Real-time gate predictions</div>
+      <div style="color:#444e70;font-size:10px;line-height:1.7;font-family:var(--font-mono)">Know when fatak closes, which train is coming, how late it is — and the perfect time to leave home.</div>
+      <div style="display:flex;justify-content:center;gap:5px;margin-top:10px">
+        <div style="width:16px;height:5px;border-radius:3px;background:#1a56db"></div>
+        <div style="width:5px;height:5px;border-radius:3px;background:#1e2235"></div>
+        <div style="width:5px;height:5px;border-radius:3px;background:#1e2235"></div>
+      </div>
+    </div>
+    <div style="width:100%;z-index:1">
+      <div style="background:#1a56db;border-radius:12px;padding:11px;text-align:center;color:#fff;font-size:12px;font-weight:500;margin-bottom:7px">Allow Location &amp; Get Started →</div>
+      <div style="text-align:center;color:#3a4060;font-size:9px;font-family:var(--font-mono)">Location used only to find nearby fataks</div>
+    </div>
+  </div>
+
+  <!-- S1 HOME -->
+  <div class="sc" id="s1" style="background:#0a0c14;min-height:486px">
+    <div style="padding:10px 12px 6px" class="row">
+      <div><div style="color:#3a4060;font-size:8px;letter-spacing:1.5px;font-family:var(--font-mono)">NEAREST FATAK</div><div style="color:#fff;font-size:12px;font-weight:500">Sarabha Nagar, Ldh</div></div>
+      <div style="display:flex;gap:5px">
+        <div style="width:26px;height:26px;border-radius:7px;background:#0f1220;display:flex;align-items:center;justify-content:center;font-size:12px">🔔</div>
+        <div style="width:26px;height:26px;border-radius:7px;background:#0f1220;display:flex;align-items:center;justify-content:center;font-size:12px">⚙️</div>
+      </div>
+    </div>
+
+    <!-- BIG STATUS CARD -->
+    <div class="mcard" style="background:linear-gradient(135deg,#0f1220,#0c1428);border-color:#1a56db">
+      <div class="row" style="margin-bottom:9px">
+        <span style="background:#0a2e1a;color:#00e676;border:1px solid #00e676;border-radius:20px;padding:3px 9px;font-size:9px;font-weight:500;letter-spacing:.5px;font-family:var(--font-mono)">● OPEN</span>
+        <span style="color:#ff4455;font-size:8px;font-family:var(--font-mono)">● LIVE</span>
+      </div>
+      <div style="text-align:center;margin:4px 0 8px">
+        <div style="color:#3a4060;font-size:8px;letter-spacing:2px;font-family:var(--font-mono)">NEXT CLOSURE IN</div>
+        <div id="timer" style="font-size:48px;font-weight:500;color:#fff;letter-spacing:-2px;line-height:1.1;font-family:var(--font-mono);font-variant-numeric:tabular-nums">07:24</div>
+        <div style="color:#3a4060;font-size:8px;font-family:var(--font-mono);margin-top:2px">Gate closes 3:47 PM · opens 3:54 PM</div>
+      </div>
+      <!-- train strip -->
+      <div style="background:rgba(255,255,255,.04);border-radius:9px;padding:8px 10px" class="row">
+        <div><div style="color:#29b6f6;font-size:10px;font-weight:500">12029 · Swarna Shatabdi</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono);margin-top:1px">Amritsar → Delhi · ETA 3:47 PM</div></div>
+        <span style="background:#2e0a0a;color:#ff4455;border-radius:4px;padding:2px 7px;font-size:9px;font-weight:500;font-family:var(--font-mono)">22 MIN LATE</span>
+      </div>
+    </div>
+
+    <!-- HOW DID WE CALCULATE? mini strip -->
+    <div style="margin:0 10px 6px;background:#0f1220;border-radius:10px;padding:8px 11px;border:1px solid #1e2235">
+      <div style="color:#3a4060;font-size:8px;font-family:var(--font-mono);margin-bottom:4px">HOW WE KNOW ↓</div>
+      <div class="row">
+        <div style="text-align:center"><div style="color:#29b6f6;font-size:9px;font-family:var(--font-mono)">Scheduled</div><div style="color:#ccc;font-size:10px">3:25 PM</div></div>
+        <div style="color:#3a4060;font-size:10px">→</div>
+        <div style="text-align:center"><div style="color:#29b6f6;font-size:9px;font-family:var(--font-mono)">NTES Live</div><div style="color:#ccc;font-size:10px">3:47 PM</div></div>
+        <div style="color:#3a4060;font-size:10px">→</div>
+        <div style="text-align:center"><div style="color:#ff4455;font-size:9px;font-family:var(--font-mono)">Delay</div><div style="color:#ff4455;font-size:10px;font-weight:500">+22 min</div></div>
+      </div>
+    </div>
+
+    <!-- UPCOMING -->
+    <div class="lbl">UPCOMING CROSSINGS</div>
+    <div class="srow" style="margin:0 10px 5px">
+      <div><div style="color:#ccc;font-size:10px">14673 · Shaheed Exp</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono);margin-top:1px">4:12 PM · ↑ UP · On time</div></div>
+      <span style="background:#0a2e1a;color:#00e676;border-radius:4px;padding:2px 6px;font-size:9px;font-family:var(--font-mono)">ON TIME</span>
+    </div>
+    <div class="srow" style="margin:0 10px 5px">
+      <div><div style="color:#ccc;font-size:10px">12498 · Shane Punjab</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono);margin-top:1px">4:51 PM · ↓ DN · 8 min early</div></div>
+      <span style="background:#0a1a2e;color:#29b6f6;border-radius:4px;padding:2px 6px;font-size:9px;font-family:var(--font-mono)">8 MIN EARLY</span>
+    </div>
+
+    <!-- PLANNER CTA -->
+    <div onclick="go(3)" style="margin:6px 10px;background:rgba(26,86,219,.12);border:1px solid #1a56db;border-radius:10px;padding:10px 12px;cursor:pointer" class="row">
+      <div><div style="color:#fff;font-size:11px;font-weight:500">🏠 Will gate be open when I arrive?</div><div style="color:#1a56db;font-size:9px;font-family:var(--font-mono);margin-top:2px">Tap to use Leave Planner</div></div>
+      <span style="color:#1a56db;font-size:14px">→</span>
+    </div>
+  </div>
+
+  <!-- S2 GATE DETAIL -->
+  <div class="sc" id="s2" style="background:#0a0c14;min-height:486px">
+    <div style="padding:10px 12px 6px;display:flex;align-items:center;gap:9px">
+      <span style="color:#1a56db;font-size:15px">←</span>
+      <div><div style="color:#fff;font-size:12px;font-weight:500">Sarabha Nagar Fatak</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">BDQ-ASR Line · KM 437.6 · Ludhiana</div></div>
+    </div>
+
+    <!-- gate visual -->
+    <div class="mcard" style="background:linear-gradient(135deg,#2e0a0a,#1a0505);border-color:#ff4455;text-align:center">
+      <div style="display:flex;align-items:center;justify-content:center;gap:1px;margin-bottom:10px">
+        <div style="width:4px;height:40px;background:#ffaa00;border-radius:2px"></div>
+        <div style="width:52px;height:5px;background:#ff4455;border-radius:2px;transform:rotate(-11deg);transform-origin:left center"></div>
+        <div style="width:26px;height:26px;border-radius:50%;background:#1a1f30;border:2px solid #ff4455;display:flex;align-items:center;justify-content:center;font-size:13px">🚂</div>
+        <div style="width:52px;height:5px;background:#ff4455;border-radius:2px;transform:rotate(11deg);transform-origin:right center"></div>
+        <div style="width:4px;height:40px;background:#ffaa00;border-radius:2px"></div>
+      </div>
+      <span style="background:#2e0a0a;color:#ff4455;border:1px solid #ff4455;border-radius:20px;padding:3px 9px;font-size:9px;font-family:var(--font-mono)">● CLOSED</span>
+      <div style="color:#ff4455;font-size:20px;font-weight:500;margin-top:7px">Gate Closed</div>
+      <div style="color:#3a4060;font-size:9px;font-family:var(--font-mono);margin-top:2px">Opens in approx 4 minutes</div>
+    </div>
+
+    <!-- calculation breakdown -->
+    <div class="mcard" style="background:#0f1220;border-color:#1e2235">
+      <div style="color:#3a4060;font-size:8px;font-family:var(--font-mono);margin-bottom:9px;letter-spacing:1.5px">PREDICTION BREAKDOWN</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="row"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">Train scheduled at</span><span style="color:#ccc;font-size:10px">3:25 PM</span></div>
+        <div class="row"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">NTES last seen at</span><span style="color:#ccc;font-size:10px">Ludhiana Jn · 3:31 PM</span></div>
+        <div class="row"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">Distance to fatak</span><span style="color:#ccc;font-size:10px">2.3 km</span></div>
+        <div class="row"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">At 87 km/h → travel</span><span style="color:#ccc;font-size:10px">~2 min</span></div>
+        <div style="border-top:1px solid #1e2235;padding-top:7px;margin-top:2px">
+          <div class="row"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">Predicted crossing</span><span style="color:#ffaa00;font-size:10px;font-weight:500">3:33 PM</span></div>
+          <div class="row" style="margin-top:5px"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">Gate closed at</span><span style="color:#ff4455;font-size:10px;font-weight:500">3:28 PM</span></div>
+          <div class="row" style="margin-top:5px"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">Gate opens at</span><span style="color:#00e676;font-size:10px;font-weight:500">3:36 PM</span></div>
+          <div class="row" style="margin-top:5px"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">Total wait</span><span style="color:#fff;font-size:11px;font-weight:500">8 minutes</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- today schedule -->
+    <div class="lbl">TODAY'S SCHEDULE</div>
+    <div class="mcard" style="background:#0f1220;border-color:#1e2235;margin-top:0">
+      <div class="row" style="margin-bottom:6px"><div style="color:#29b6f6;font-size:10px;font-weight:500">12029 · Swarna Shatabdi</div><span style="background:#2e0a0a;color:#ff4455;border-radius:4px;padding:2px 6px;font-size:9px;font-family:var(--font-mono)">22 MIN LATE</span></div>
+      <div style="display:flex;gap:12px">
+        <div><div style="color:#3a4060;font-size:7px;font-family:var(--font-mono)">SCHED</div><div style="color:#888;font-size:10px">3:25 PM</div></div>
+        <div><div style="color:#3a4060;font-size:7px;font-family:var(--font-mono)">ACTUAL</div><div style="color:#ff4455;font-size:10px;font-weight:500">3:47 PM</div></div>
+        <div><div style="color:#3a4060;font-size:7px;font-family:var(--font-mono)">DIR</div><div style="color:#888;font-size:10px">↓ DN</div></div>
+        <div><div style="color:#3a4060;font-size:7px;font-family:var(--font-mono)">WAIT</div><div style="color:#fff;font-size:10px;font-weight:500">8 min</div></div>
+      </div>
+    </div>
+    <div style="margin:4px 10px;background:rgba(41,182,246,.07);border:1px solid #29b6f6;border-radius:9px;padding:9px;text-align:center;color:#29b6f6;font-size:10px;font-weight:500">📤 Share Gate Status</div>
+  </div>
+
+  <!-- S3 LEAVE PLANNER -->
+  <div class="sc" id="s3" style="background:#0a0c14;min-height:486px">
+    <div style="padding:10px 12px 6px;display:flex;align-items:center;gap:9px">
+      <span style="color:#1a56db;font-size:15px">←</span>
+      <div><div style="color:#fff;font-size:12px;font-weight:500">Leave Planner</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">Will gate be open when you arrive?</div></div>
+    </div>
+
+    <!-- input card -->
+    <div class="mcard" style="background:#0f1220;border-color:#1e2235">
+      <div style="color:#3a4060;font-size:8px;font-family:var(--font-mono);margin-bottom:8px;letter-spacing:1.5px">YOUR DETAILS</div>
+      <div style="margin-bottom:8px">
+        <div style="color:#888;font-size:9px;font-family:var(--font-mono);margin-bottom:4px">FROM (Your Location)</div>
+        <div style="background:#0a0c14;border:1px solid #1e2235;border-radius:8px;padding:7px 10px;color:#ccc;font-size:10px">📍 Sector 32, Ludhiana</div>
+      </div>
+      <div style="margin-bottom:8px">
+        <div style="color:#888;font-size:9px;font-family:var(--font-mono);margin-bottom:4px">TO (Fatak)</div>
+        <div style="background:#0a0c14;border:1px solid #1e2235;border-radius:8px;padding:7px 10px;color:#ccc;font-size:10px">🚧 Sarabha Nagar Fatak</div>
+      </div>
+      <div>
+        <div style="color:#888;font-size:9px;font-family:var(--font-mono);margin-bottom:4px">TRAVEL MODE</div>
+        <div style="display:flex;gap:6px">
+          <div style="flex:1;background:#1a56db;border-radius:7px;padding:5px;text-align:center;font-size:10px;color:#fff">🛵 Scooter</div>
+          <div style="flex:1;background:#0a0c14;border:1px solid #1e2235;border-radius:7px;padding:5px;text-align:center;font-size:10px;color:#555">🚗 Car</div>
+          <div style="flex:1;background:#0a0c14;border:1px solid #1e2235;border-radius:7px;padding:5px;text-align:center;font-size:10px;color:#555">🚶 Walk</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- calculation -->
+    <div class="mcard" style="background:#0f1220;border-color:#1e2235">
+      <div style="color:#3a4060;font-size:8px;font-family:var(--font-mono);margin-bottom:8px;letter-spacing:1.5px">LIVE CALCULATION</div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <div class="row"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">Distance to fatak</span><span style="color:#ccc;font-size:10px">4.2 km</span></div>
+        <div class="row"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">City avg speed</span><span style="color:#ccc;font-size:10px">25 km/h</span></div>
+        <div class="row"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">Your travel time</span><span style="color:#ccc;font-size:10px">~10 min</span></div>
+        <div class="row"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">You leave now (3:20 PM)</span><span style="color:#ccc;font-size:10px">arrive 3:30 PM</span></div>
+        <div style="border-top:1px solid #1e2235;padding-top:6px;margin-top:2px">
+          <div class="row"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">Gate closes at</span><span style="color:#ff4455;font-size:10px;font-weight:500">3:29 PM</span></div>
+          <div class="row" style="margin-top:4px"><span style="color:#888;font-size:9px;font-family:var(--font-mono)">Gate opens at</span><span style="color:#00e676;font-size:10px;font-weight:500">3:37 PM</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT CARD -->
+    <div class="mcard" style="background:linear-gradient(135deg,#2e1400,#1a0c00);border-color:#ffaa00">
+      <div style="color:#ffaa00;font-size:11px;font-weight:500;margin-bottom:5px">🟠 You will hit a closed gate</div>
+      <div style="color:#888;font-size:9px;font-family:var(--font-mono);line-height:1.7">You arrive 3:30 PM but gate closes at 3:29 PM. You will wait <span style="color:#ffaa00;font-weight:500">7 minutes</span> for it to open.</div>
+      <div style="margin-top:10px;background:rgba(0,230,118,.08);border:1px solid #00e676;border-radius:8px;padding:8px 10px">
+        <div style="color:#00e676;font-size:10px;font-weight:500">✓ Best time to leave: 3:27 PM</div>
+        <div style="color:#444e70;font-size:9px;font-family:var(--font-mono);margin-top:2px">You will arrive at 3:37 PM — exactly when the gate opens. Zero wait.</div>
+      </div>
+    </div>
+
+    <!-- notify me button -->
+    <div style="margin:4px 10px;background:#1a56db;border-radius:10px;padding:10px;text-align:center;color:#fff;font-size:11px;font-weight:500">🔔 Notify me at 3:27 PM to leave</div>
+  </div>
+
+  <!-- S4 TRAIN DETAIL -->
+  <div class="sc" id="s4" style="background:#0a0c14;min-height:486px">
+    <div style="padding:10px 12px 6px;display:flex;align-items:center;gap:9px">
+      <span style="color:#1a56db;font-size:15px">←</span>
+      <div><div style="color:#fff;font-size:12px;font-weight:500">12029 · Swarna Shatabdi</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">Superfast Express · Daily</div></div>
+    </div>
+
+    <div class="mcard" style="background:linear-gradient(135deg,#2e0a0a,#1a0808);border-color:#ff4455">
+      <div class="row" style="margin-bottom:7px">
+        <span style="background:#2e0a0a;color:#ff4455;border-radius:4px;padding:2px 7px;font-size:9px;font-family:var(--font-mono)">22 MIN LATE</span>
+        <span style="color:#ff4455;font-size:8px;font-family:var(--font-mono)">NTES LIVE</span>
+      </div>
+      <div style="color:#ff4455;font-size:24px;font-weight:500">22 min late</div>
+      <div style="color:#3a4060;font-size:9px;font-family:var(--font-mono);margin-top:3px">Delayed departure at Ambala Cantt</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:11px">
+        <div style="text-align:center"><div style="color:#fff;font-size:10px;font-weight:500">ASR</div><div style="color:#3a4060;font-size:8px">Amritsar</div></div>
+        <div style="flex:1;height:3px;background:linear-gradient(90deg,#ff4455,#ffaa00);border-radius:2px;position:relative"><div style="position:absolute;top:-4px;left:57%;width:9px;height:9px;border-radius:50%;background:#ffaa00;border:2px solid #0a0c14"></div></div>
+        <div style="text-align:center"><div style="color:#fff;font-size:10px;font-weight:500">NDLS</div><div style="color:#3a4060;font-size:8px">Delhi</div></div>
+      </div>
+      <div style="text-align:center;margin-top:5px;color:#ffaa00;font-size:9px;font-family:var(--font-mono)">● Near Ludhiana Junction</div>
+    </div>
+
+    <div style="margin:0 10px 8px;display:flex;gap:6px">
+      <div style="flex:1;background:#0f1220;border:1px solid #1e2235;border-radius:9px;padding:7px;text-align:center"><div style="color:#fff;font-size:11px;font-weight:500">87</div><div style="color:#3a4060;font-size:7px;font-family:var(--font-mono);margin-top:1px">KM/H</div></div>
+      <div style="flex:1;background:#0f1220;border:1px solid #1e2235;border-radius:9px;padding:7px;text-align:center"><div style="color:#fff;font-size:11px;font-weight:500">KM 437</div><div style="color:#3a4060;font-size:7px;font-family:var(--font-mono);margin-top:1px">POSITION</div></div>
+      <div style="flex:1;background:#0f1220;border:1px solid #1e2235;border-radius:9px;padding:7px;text-align:center"><div style="color:#fff;font-size:11px;font-weight:500">+22m</div><div style="color:#3a4060;font-size:7px;font-family:var(--font-mono);margin-top:1px">DELAY</div></div>
+    </div>
+
+    <div class="lbl">UPCOMING FATAK CROSSINGS</div>
+    <div class="srow" style="margin:0 10px 5px"><div><div style="color:#ccc;font-size:10px">Sarabha Nagar Fatak</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">ETA 3:47 PM · KM 437.6</div></div><span style="background:#2e0a0a;color:#ff4455;border:1px solid #ff4455;border-radius:20px;padding:2px 8px;font-size:8px;font-family:var(--font-mono)">● CLOSED</span></div>
+    <div class="srow" style="margin:0 10px 5px"><div><div style="color:#ccc;font-size:10px">BRS Nagar Fatak</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">ETA 3:49 PM · KM 439.1</div></div><span style="background:#2e1f0a;color:#ffaa00;border:1px solid #ffaa00;border-radius:20px;padding:2px 8px;font-size:8px;font-family:var(--font-mono)">● SOON</span></div>
+    <div class="srow" style="margin:0 10px"><div><div style="color:#ccc;font-size:10px">Sherpur Fatak</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">ETA 3:52 PM · KM 442.3</div></div><span style="background:#0a2e1a;color:#00e676;border:1px solid #00e676;border-radius:20px;padding:2px 8px;font-size:8px;font-family:var(--font-mono)">● OPEN</span></div>
+  </div>
+
+  <!-- S5 MAP -->
+  <div class="sc" id="s5" style="background:#0a0c14;min-height:486px">
+    <div style="padding:10px 12px 8px" class="row">
+      <div style="color:#fff;font-size:13px;font-weight:500">Explore Fataks</div>
+      <span style="background:#0a2e1a;color:#00e676;border:1px solid #00e676;border-radius:20px;padding:3px 9px;font-size:9px;font-family:var(--font-mono)">● OPEN</span>
+    </div>
+    <div style="margin:0 10px 7px;background:#0f1220;border-radius:9px;padding:7px 10px;border:1px solid #1e2235;display:flex;align-items:center;gap:7px">
+      <span style="font-size:11px;color:#3a4060">🔍</span><span style="color:#3a4060;font-size:10px;font-family:var(--font-mono)">Search by road or area...</span>
+    </div>
+    <div style="display:flex;gap:5px;padding:0 10px 8px;overflow-x:auto">
+      <div style="white-space:nowrap;background:#1a56db;border-radius:20px;padding:4px 10px;font-size:9px;color:#fff;font-weight:500;font-family:var(--font-mono)">All</div>
+      <div style="white-space:nowrap;background:#0f1220;border:1px solid #1e2235;border-radius:20px;padding:4px 10px;font-size:9px;color:#444e70;font-family:var(--font-mono)">Open</div>
+      <div style="white-space:nowrap;background:#0f1220;border:1px solid #1e2235;border-radius:20px;padding:4px 10px;font-size:9px;color:#444e70;font-family:var(--font-mono)">Closed</div>
+      <div style="white-space:nowrap;background:#0f1220;border:1px solid #1e2235;border-radius:20px;padding:4px 10px;font-size:9px;color:#444e70;font-family:var(--font-mono)">Soon</div>
+    </div>
+    <div style="margin:0 10px;border-radius:12px;overflow:hidden;height:180px;background:#0a1020;border:1px solid #1a2a3a;position:relative">
+      <div style="position:absolute;left:0;right:0;top:50px;height:1px;background:rgba(26,86,219,.07)"></div>
+      <div style="position:absolute;left:0;right:0;top:100px;height:1px;background:rgba(26,86,219,.07)"></div>
+      <div style="position:absolute;left:0;right:0;top:150px;height:1px;background:rgba(26,86,219,.07)"></div>
+      <div style="position:absolute;top:0;bottom:0;left:60px;width:1px;background:rgba(26,86,219,.07)"></div>
+      <div style="position:absolute;top:0;bottom:0;left:120px;width:1px;background:rgba(26,86,219,.07)"></div>
+      <div style="position:absolute;top:0;bottom:0;left:180px;width:1px;background:rgba(26,86,219,.07)"></div>
+      <div style="position:absolute;left:0;right:0;top:86px;height:3px;background:rgba(255,170,0,.45)"></div>
+      <div style="position:absolute;left:35px;top:76px">
+        <div style="width:18px;height:18px;border-radius:50%;background:#ff4455;display:flex;align-items:center;justify-content:center"><div style="width:5px;height:5px;border-radius:50%;background:#fff"></div></div>
+        <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#0a0c14;border:1px solid #1e2235;border-radius:4px;padding:2px 4px;font-size:7px;color:#aaa;font-family:var(--font-mono)">Sarabha Ngr</div>
+      </div>
+      <div style="position:absolute;left:116px;top:76px">
+        <div style="width:18px;height:18px;border-radius:50%;background:#00e676;display:flex;align-items:center;justify-content:center"><div style="width:5px;height:5px;border-radius:50%;background:#fff"></div></div>
+        <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#0a0c14;border:1px solid #1e2235;border-radius:4px;padding:2px 4px;font-size:7px;color:#aaa;font-family:var(--font-mono)">BRS Nagar</div>
+      </div>
+      <div style="position:absolute;left:191px;top:76px">
+        <div style="width:18px;height:18px;border-radius:50%;background:#ffaa00;display:flex;align-items:center;justify-content:center"><div style="width:5px;height:5px;border-radius:50%;background:#fff"></div></div>
+        <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#0a0c14;border:1px solid #1e2235;border-radius:4px;padding:2px 4px;font-size:7px;color:#aaa;font-family:var(--font-mono)">Dugri</div>
+      </div>
+      <div style="position:absolute;left:105px;top:120px;width:11px;height:11px;border-radius:50%;background:#29b6f6;border:2px solid #fff"></div>
+      <div style="position:absolute;bottom:6px;right:7px;background:rgba(0,0,0,.7);border-radius:5px;padding:2px 6px;font-size:7px;color:#444e70;font-family:var(--font-mono)">📍 Ludhiana · 1m ago</div>
+    </div>
+    <div style="display:flex;gap:10px;padding:7px 13px">
+      <div style="display:flex;align-items:center;gap:3px"><div style="width:7px;height:7px;border-radius:50%;background:#00e676"></div><span style="font-size:8px;color:#444e70;font-family:var(--font-mono)">Open</span></div>
+      <div style="display:flex;align-items:center;gap:3px"><div style="width:7px;height:7px;border-radius:50%;background:#ff4455"></div><span style="font-size:8px;color:#444e70;font-family:var(--font-mono)">Closed</span></div>
+      <div style="display:flex;align-items:center;gap:3px"><div style="width:7px;height:7px;border-radius:50%;background:#ffaa00"></div><span style="font-size:8px;color:#444e70;font-family:var(--font-mono)">Soon</span></div>
+      <div style="display:flex;align-items:center;gap:3px"><div style="width:7px;height:7px;border-radius:50%;background:#29b6f6"></div><span style="font-size:8px;color:#444e70;font-family:var(--font-mono)">You</span></div>
+    </div>
+    <div class="lbl">3 FATAKS NEARBY</div>
+    <div class="srow" style="margin:0 10px 5px"><div><div style="color:#ccc;font-size:10px">Sarabha Nagar Fatak</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">0.3 km away</div></div><span style="background:#2e0a0a;color:#ff4455;border:1px solid #ff4455;border-radius:20px;padding:2px 8px;font-size:8px;font-family:var(--font-mono)">● CLOSED</span></div>
+    <div class="srow" style="margin:0 10px 5px"><div><div style="color:#ccc;font-size:10px">BRS Nagar Fatak</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">1.1 km away</div></div><span style="background:#0a2e1a;color:#00e676;border:1px solid #00e676;border-radius:20px;padding:2px 8px;font-size:8px;font-family:var(--font-mono)">● OPEN</span></div>
+    <div class="srow" style="margin:0 10px"><div><div style="color:#ccc;font-size:10px">Dugri Fatak</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">2.4 km away</div></div><span style="background:#2e1f0a;color:#ffaa00;border:1px solid #ffaa00;border-radius:20px;padding:2px 8px;font-size:8px;font-family:var(--font-mono)">● SOON</span></div>
+  </div>
+
+  <!-- S6 ALERTS -->
+  <div class="sc" id="s6" style="background:#0a0c14;min-height:486px">
+    <div style="padding:10px 12px 10px"><div style="color:#fff;font-size:13px;font-weight:500">Alerts &amp; Notifications</div></div>
+    <div class="mcard" style="background:linear-gradient(135deg,#0c1840,#081228);border-color:#1a56db">
+      <div class="row">
+        <div><div style="color:#fff;font-size:11px;font-weight:500">🚗 Commute Mode</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono);margin-top:2px">Auto-tracks your route fataks</div><div style="color:#29b6f6;font-size:8px;font-family:var(--font-mono);margin-top:1px">8:00–9:30 AM · 5:30–7:00 PM</div></div>
+        <div id="tog" onclick="togCM()" style="width:36px;height:21px;border-radius:11px;background:#1a56db;cursor:pointer;position:relative;flex-shrink:0"><div id="togk" style="width:15px;height:15px;border-radius:50%;background:#fff;position:absolute;top:3px;left:18px;transition:left .2s"></div></div>
+      </div>
+    </div>
+    <div style="padding:0 10px 6px">
+      <div class="lbl" style="padding:0;margin-bottom:7px">SAVED FATAKS</div>
+      <div class="srow"><div><div style="color:#fff;font-size:10px">Sarabha Nagar Fatak</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">Alert 10 min before</div></div><div style="width:28px;height:17px;border-radius:9px;background:#1a56db;position:relative;flex-shrink:0"><div style="width:13px;height:13px;border-radius:50%;background:#fff;position:absolute;top:2px;left:13px"></div></div></div>
+      <div class="srow"><div><div style="color:#fff;font-size:10px">BRS Nagar Fatak</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">Alert 5 min before</div></div><div style="width:28px;height:17px;border-radius:9px;background:#1a56db;position:relative;flex-shrink:0"><div style="width:13px;height:13px;border-radius:50%;background:#fff;position:absolute;top:2px;left:13px"></div></div></div>
+      <div class="srow"><div><div style="color:#444e70;font-size:10px">Dugri Fatak</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">Alert 15 min before</div></div><div style="width:28px;height:17px;border-radius:9px;background:#1e2235;position:relative;flex-shrink:0"><div style="width:13px;height:13px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px"></div></div></div>
+    </div>
+    <div style="padding:0 10px">
+      <div class="lbl" style="padding:0;margin-bottom:7px">TODAY'S ALERTS</div>
+      <div style="display:flex;gap:9px;padding:8px 0;border-bottom:1px solid #1e2235"><span style="font-size:14px">🟠</span><div><div style="color:#ccc;font-size:10px">Sarabha Nagar closes in 10 min</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">3:37 PM</div></div></div>
+      <div style="display:flex;gap:9px;padding:8px 0;border-bottom:1px solid #1e2235"><span style="font-size:14px">🔴</span><div><div style="color:#ccc;font-size:10px">Sarabha Nagar now CLOSED</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">3:47 PM</div></div></div>
+      <div style="display:flex;gap:9px;padding:8px 0"><span style="font-size:14px">🟢</span><div><div style="color:#ccc;font-size:10px">Sarabha Nagar now OPEN · 8 min wait</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">3:54 PM</div></div></div>
+      <div style="display:flex;gap:9px;padding:8px 0;border-top:1px solid #1e2235"><span style="font-size:14px">🏠</span><div><div style="color:#29b6f6;font-size:10px">Leave at 3:27 PM — zero wait at gate</div><div style="color:#3a4060;font-size:8px;font-family:var(--font-mono)">Leave Planner suggestion · 3:20 PM</div></div></div>
+    </div>
+  </div>
+
+  <!-- S7 SETTINGS -->
+  <div class="sc" id="s7" style="background:#0a0c14;min-height:486px">
+    <div style="padding:10px 12px 10px"><div style="color:#fff;font-size:13px;font-weight:500">Settings</div></div>
+    <div style="padding:0 10px;margin-bottom:8px"><div class="lbl" style="padding:0;margin-bottom:5px">REGION</div><div style="background:#0f1220;border-radius:11px;overflow:hidden;border:1px solid #1e2235"><div class="row" style="padding:10px 12px;border-bottom:1px solid #1e2235"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px">📍</span><span style="color:#ccc;font-size:10px">City</span></div><span style="color:#444e70;font-size:10px;font-family:var(--font-mono)">Ludhiana, Punjab</span></div><div class="row" style="padding:10px 12px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px">🌐</span><span style="color:#ccc;font-size:10px">Language</span></div><span style="color:#444e70;font-size:10px;font-family:var(--font-mono)">English</span></div></div></div>
+    <div style="padding:0 10px;margin-bottom:8px"><div class="lbl" style="padding:0;margin-bottom:5px">DISPLAY</div><div style="background:#0f1220;border-radius:11px;overflow:hidden;border:1px solid #1e2235"><div class="row" style="padding:10px 12px;border-bottom:1px solid #1e2235"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px">🌙</span><span style="color:#ccc;font-size:10px">Dark Mode</span></div><span style="color:#444e70;font-size:10px;font-family:var(--font-mono)">On</span></div><div class="row" style="padding:10px 12px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px">🔄</span><span style="color:#ccc;font-size:10px">Refresh Rate</span></div><span style="color:#444e70;font-size:10px;font-family:var(--font-mono)">Every 2 min</span></div></div></div>
+    <div style="padding:0 10px;margin-bottom:8px"><div class="lbl" style="padding:0;margin-bottom:5px">NOTIFICATIONS</div><div style="background:#0f1220;border-radius:11px;overflow:hidden;border:1px solid #1e2235"><div class="row" style="padding:10px 12px;border-bottom:1px solid #1e2235"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px">🔔</span><span style="color:#ccc;font-size:10px">Push Alerts</span></div><span style="color:#444e70;font-size:10px;font-family:var(--font-mono)">Enabled</span></div><div class="row" style="padding:10px 12px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px">⏱️</span><span style="color:#ccc;font-size:10px">Alert Lead Time</span></div><span style="color:#444e70;font-size:10px;font-family:var(--font-mono)">10 minutes</span></div></div></div>
+    <div style="padding:0 10px;margin-bottom:8px"><div class="lbl" style="padding:0;margin-bottom:5px">DATA SOURCE</div><div style="background:#0f1220;border-radius:11px;overflow:hidden;border:1px solid #1e2235"><div class="row" style="padding:10px 12px;border-bottom:1px solid #1e2235"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px">🚆</span><span style="color:#ccc;font-size:10px">Train Data</span></div><span style="color:#444e70;font-size:10px;font-family:var(--font-mono)">NTES / RailYatri</span></div><div class="row" style="padding:10px 12px;border-bottom:1px solid #1e2235"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px">🗺️</span><span style="color:#ccc;font-size:10px">Maps / Traffic</span></div><span style="color:#444e70;font-size:10px;font-family:var(--font-mono)">Google Maps API</span></div><div class="row" style="padding:10px 12px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:13px">📊</span><span style="color:#ccc;font-size:10px">App Version</span></div><span style="color:#444e70;font-size:10px;font-family:var(--font-mono)">v1.0 Beta</span></div></div></div>
+    <div style="margin:4px 10px;background:rgba(255,68,85,.07);border:1px solid rgba(255,68,85,.25);border-radius:11px;padding:10px 12px;display:flex;align-items:center;gap:8px"><span style="font-size:13px">🗑️</span><span style="color:#ff4455;font-size:10px">Clear All Saved Fataks</span></div>
+  </div>
+
+  </div>
+  <div class="hbar"><div style="width:52px;height:3px;background:#1e2235;border-radius:3px"></div></div>
+</div>
+
+<div class="navrow">
+  <button class="nbtn" id="pb" onclick="prev()" disabled>← Prev</button>
+  <span id="pgl" style="color:var(--color-text-tertiary);font-size:11px;font-family:var(--font-mono)">1 / 8</span>
+  <button class="nbtn" id="nb" onclick="nxt()">Next →</button>
+</div>
+
+<div class="slabel">
+  <div id="stitle" style="color:var(--color-text-primary);font-size:13px;font-weight:500">Screen 1 — Splash</div>
+  <div id="sdesc" style="color:var(--color-text-secondary);font-size:11px;margin-top:3px;font-family:var(--font-mono)">Onboarding · Logo · Location permission</div>
+</div>
+</div>
+
+<script>
+let cur=0;
+const N=8;
+const T=["Screen 1 — Splash","Screen 2 — Home","Screen 3 — Gate Detail","Screen 4 — Leave Planner","Screen 5 — Train Detail","Screen 6 — Map","Screen 7 — Alerts","Screen 8 — Settings"];
+const D=["Onboarding · Logo · Location permission","Live countdown · NTES delay strip · Upcoming trains · Leave Planner CTA","Gate barrier visual · Prediction breakdown · Scheduled vs actual times","🌟 NEW — Travel time + gate timing + best leave time + notify me","NTES live position · Delay reason · Upcoming fatak crossings list","Color-coded live pins · Filter · Nearby fatak list","Commute Mode · Leave Planner alert · Saved fataks · Alert history","City · Language · NTES + Google Maps data source · Refresh rate"];
+
+function go(i){
+  document.querySelectorAll('.sc').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('s'+i).classList.add('on');
+  document.querySelectorAll('.tab')[i].classList.add('on');
+  document.getElementById('sbody').scrollTop=0;
+  cur=i;
+  document.getElementById('pgl').textContent=(i+1)+' / '+N;
+  document.getElementById('stitle').textContent=T[i];
+  document.getElementById('sdesc').textContent=D[i];
+  document.getElementById('pb').disabled=i===0;
+  document.getElementById('nb').disabled=i===N-1;
+}
+function prev(){if(cur>0)go(cur-1);}
+function nxt(){if(cur<N-1)go(cur+1);}
+
+let secs=444;
+setInterval(()=>{
+  secs=(secs-1+600)%600;
+  const m=Math.floor(secs/60),s=secs%60;
+  const el=document.getElementById('timer');
+  if(el)el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+},1000);
+
+let cm=true;
+function togCM(){
+  cm=!cm;
+  document.getElementById('tog').style.background=cm?'#1a56db':'#1e2235';
+  document.getElementById('togk').style.left=cm?'18px':'3px';
+}
+</script>
